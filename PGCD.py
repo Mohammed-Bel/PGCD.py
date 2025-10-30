@@ -3,7 +3,7 @@ a = int(input("Entrez le premier nombre : "))
 b = int(input("Entrez le deuxième nombre : "))
 
 # Afficher le titre du calcul
-print(f"\n Calcul du PGCD({a}, {b}) ")
+print(f"\n--- Calcul du PGCD({a}, {b}) ---")
 
 # Garder une copie des valeurs initiales pour l'affichage final
 x, y = a, b
@@ -20,4 +20,10 @@ while b != 0:
     etape += 1  # Passer à l’étape suivante
 
 # Quand b = 0, a contient le PGCD
-print(f"\n Le PGCD de {x} et {y} est : {a}")
+print(f"\n ✅ Le PGCD de {x} et {y} est : {a}")
+
+# Vérifier si les deux nombres sont premiers entre eux
+if a == 1:
+    print("🟢 Les deux nombres sont premiers entre eux.")
+else:
+    print("🔸 Les deux nombres ne sont pas premiers entre eux.")

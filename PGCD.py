@@ -1,14 +1,23 @@
-# Programme pour calculer le PGCD de deux nombres
+# Lire les deux nombres entrés par l'utilisateur
+a = int(input("Entrez le premier nombre : "))
+b = int(input("Entrez le deuxième nombre : "))
 
-# Lecture des deux nombres
-A = int(input("Entrez le premier nombre A : "))
-B = int(input("Entrez le deuxième nombre B : "))
+# Afficher le titre du calcul
+print(f"\n Calcul du PGCD({a}, {b}) ")
 
-# Algorithme d'Euclide
-while B != 0:
-    R = A % B
-    A = B
-    B = R
+# Garder une copie des valeurs initiales pour l'affichage final
+x, y = a, b
 
-# Affichage du résultat
-print("Le PGCD est :", A)
+# Initialiser un compteur d'étapes pour suivre les calculs
+etape = 1
+
+# Algorithme d’Euclide : on continue tant que b n’est pas nul
+while b != 0:
+    r = a % b  # Calculer le reste de la division de a par b
+    print(f"Étape {etape}: {a} = {b} * ({a // b}) + {r}")  # Afficher la division entière et le reste
+    a = b  # L’ancien b devient le nouveau a
+    b = r  # Le reste devient le nouveau b
+    etape += 1  # Passer à l’étape suivante
+
+# Quand b = 0, a contient le PGCD
+print(f"\n Le PGCD de {x} et {y} est : {a}")

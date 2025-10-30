@@ -25,5 +25,3 @@ print(f"\n ✅ Le PGCD de {x} et {y} est : {a}")
 # Vérifier si les deux nombres sont premiers entre eux
 if a == 1:
     print("🟢 Les deux nombres sont premiers entre eux.")
-else:
-    print("🔸 Les deux nombres ne sont pas premiers entre eux.")

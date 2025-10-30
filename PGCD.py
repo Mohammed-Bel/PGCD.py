@@ -1,27 +1,40 @@
-# Lire les deux nombres entrés par l'utilisateur
+# Lire les deux nombres
 a = int(input("Entrez le premier nombre : "))
 b = int(input("Entrez le deuxième nombre : "))
 
-# Afficher le titre du calcul
-print(f"\n--- Calcul du PGCD({a}, {b}) ---")
-
-# Garder une copie des valeurs initiales pour l'affichage final
+# Sauvegarder les valeurs originales
 x, y = a, b
 
-# Initialiser un compteur d'étapes pour suivre les calculs
+print(f"\n--- Calcul du PGCD({a}, {b}) et des coefficients de Bézout ---\n")
+
+# Variables pour l'algorithme d'Euclide étendu
+u1, u2 = 1, 0
+v1, v2 = 0, 1
 etape = 1
 
-# Algorithme d’Euclide : on continue tant que b n’est pas nul
+# Tant que b n'est pas nul
 while b != 0:
-    r = a % b  # Calculer le reste de la division de a par b
-    print(f"Étape {etape}: {a} = {b} * ({a // b}) + {r}")  # Afficher la division entière et le reste
-    a = b  # L’ancien b devient le nouveau a
-    b = r  # Le reste devient le nouveau b
-    etape += 1  # Passer à l’étape suivante
+    q = a // b   # quotient
+    r = a % b    # reste
+    
+    print(f"Étape {etape}: {a} = {b} * ({q}) + {r}")
+    
+    # Mise à jour des valeurs
+    a, b = b, r
+    
+    # Mise à jour des coefficients de Bézout
+    u1, u2 = u2, u1 - q * u2
+    v1, v2 = v2, v1 - q * v2
+    
+    etape += 1
 
-# Quand b = 0, a contient le PGCD
-print(f"\n ✅ Le PGCD de {x} et {y} est : {a}")
+# Quand b = 0 → a est le PGCD
+pgcd = a
+
+print(f"\n✅ Le PGCD de {x} et {y} est : {pgcd}")
+print(f"🧮 Coefficients de Bézout : u = {u1}, v = {v1}")
+print(f"➡️ Vérification : {x}*({u1}) + {y}*({v1}) = {x*u1 + y*v1}")
 
 # Vérifier si les deux nombres sont premiers entre eux
-if a == 1:
+if pgcd == 1:
     print("🟢 Les deux nombres sont premiers entre eux.")
